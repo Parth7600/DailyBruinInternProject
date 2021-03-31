@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+import CreateSource from './components/CreateSource';
+import AllSources from './components/AllSources';
+import UpdateSource from './components/UpdateSource';
+import DeleteSource from './components/DeleteSource';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path = "/create" exact={true} component={CreateSource}/>
+        <Route path = "/" exact={true} component={AllSources}/>
+        <Route path = "/update/:id" exact={true} component={UpdateSource}/>
+        <Route path = "/delete/:id" exact={true} component={DeleteSource}/>
+      </Switch>
+    </Router>
   );
 }
 
